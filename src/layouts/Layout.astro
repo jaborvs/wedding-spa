@@ -1,8 +1,6 @@
 ---
 import "@fontsource-variable/cinzel"
 import "../styles/global.css"
-
-const { children } = Astro.props;
 ---
 
 <html lang="es">
@@ -18,22 +16,9 @@ const { children } = Astro.props;
   </head>
   <body class="bg-secondary font-serif text-primary">
     <slot name="header" />
-    <main class="transition-all">
-      {children}
+    <main>
+      <slot />
     </main>
   </body>
 </html>
-
-<script>
-  const sections = document.querySelectorAll(".fade-in");
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting) entry.target.classList.add("show");
-      });
-    }, 
-    { threshold: 0.1 }
-  );
-  sections.forEach(section => observer.observe(section));
-</script>
 
